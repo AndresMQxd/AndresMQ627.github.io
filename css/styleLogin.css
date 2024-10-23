@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+section .imgBx{
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+section .imgBx::before{
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   background: linear-gradient(225deg, #e91e63, #03a9f4);
+   z-index: 1;
+   mix-blend-mode: screen;
+}
+
+section .imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+section .contenidoBx{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+section .contenidoBx .formBx{
+    width: 50%;
+}
+
+section .contenidoBx .formBx h2{
+    color: #607db8;
+    font-weight: 600;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #3b007e;
+    display: inline-block;
+    letter-spacing: 1px;
+
+}
+
+section .contenidoBx .formBx .inputBx{
+    margin-bottom: 20px;
+}
+
+section .contenidoBx .formBx .inputBx span{
+   font-size: 16px;
+   margin-bottom: 5px;
+   display: inline-block;
+   color: #607d8d;
+   font-weight: 300;
+   font-size: 16px;
+   letter-spacing: 1px;
+
+
+}
+
+section .contenidoBx .formBx .inputBx input{
+   width: 100%;
+   padding: 10px 20px;
+   outline: none;
+   font-weight: 400;
+   border: 1px solid #607d8d;
+   font-size: 16px;
+   letter-spacing: 1px;
+   color: #607d8d;
+   background: transparent;
+   border-radius: 30px;
+
+}
+
+section .contenidoBx .formBx .inputBx input[type = "submit"]{
+    
+    background: #3b007e;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+ }
+
+ section .contenidoBx .formBx .inputBx input[type = "submit"]:hover{
+    
+    background: #250050;
+    
+ }
+
+ section .contenidoBx .formBx .recordarContra{
+    margin-bottom: 10px;
+    color: #607d8d;
+    font-weight: 400;
+    font-size: 14px;
+ }
+
+ section .contenidoBx .formBx p{
+    color: #607d8d;
+ }
+
+ section .contenidoBx .formBx p a{
+    color: #3b007e;
+ }
+
+ section .contenidoBx .formBx h3{
+    color: #607d8d;
+    text-align: center;
+    margin: 50px 0 10px;
+    font-weight: 500;
+ }
+
+
+
+ section .contenidoBx .formBx .redes{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+section .contenidoBx .formBx .redes li {
+    list-style: none;
+}
+
+section .contenidoBx .formBx .redes li a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: #607d8d;
+    border-radius: 50%;
+}
+
+section .contenidoBx .formBx .redes li a:hover {
+   
+    background: #3b007e;
+    
+}
+
+section .contenidoBx .formBx .redes li a img {
+   transform: scale(0.5);
+   filter: invert(1);
+}
+
+@media(max-width: 768px){
+    section .imgBx{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    section .contenidoBx{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    section .contenidoBx .formBx{
+        width: 100%;
+        padding: 40px;
+        background: rgb(255, 255, 255,  0.9);
+        margin: 50px;
+    }
+
+    section .contenidoBx .formBx h3{
+        color:#607d8d;
+        text-align: center;
+        margin: 30px 0 10px;
+        font-weight: 500;
+    }
+}
+
+

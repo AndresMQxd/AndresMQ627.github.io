@@ -65,7 +65,7 @@ header .nav-center {
     gap: 20px;
     justify-content: center;
     flex-grow: 1;
-   
+    margin-left: 40px; /* Esto empuja los ítems centrales lejos del logo */
 }
 
 
@@ -84,7 +84,7 @@ header ul li a {
 
 header ul li a:hover, header ul li a.activo {
     background-color: #fff;
-    box-shadow: 0 25px 100px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     border-radius: 25px;
 }
 
@@ -94,7 +94,6 @@ header .buttons {
 }
 
 header .buttons a {
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     padding: 8px 15px;
     background-color: #3b007e;
     color: #fff;
@@ -148,10 +147,10 @@ header .buttons a:hover {
 .img img {
     max-width: 200px;
     margin-top: 20px;
-    animation: animacion 5s ease-in-out infinite;
+    animation: float 5s ease-in-out infinite;
 }
 
-@keyframes animacion {
+@keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
 }
@@ -201,66 +200,70 @@ header .buttons a:hover {
     to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 768px) {
     header {
-        flex-direction: column; 
-        align-items: center;
-        gap: 15px;
+        flex-direction: column;
+        gap: 10px;
     }
 
     header ul {
-        display: flex;
         flex-direction: column;
-        align-items: center; 
-        width: 100%;
-        gap: 10px;
+        gap: 5px;
     }
 
-    header ul li {
-        width: 100%;
-        text-align: center; 
-        align-items: center;
+    .contenido h2 {
+        font-size: 1.5em;
     }
 
-    header .logo {
-        text-align: center; 
-        margin-bottom: 10px;
-    }
-    
-
-    header .buttons {
-        flex-direction: column; 
-        align-items: center;
-        width: 80%;
-        gap: 10px;
+    .contenido p {
+        font-size: 1em;
     }
 
-    header .buttons a {
-        width: 80%; 
-        text-align: center;
-        padding: 10px 0;
-        font-size: 1em; 
+    .img img {
+        max-width: 150px;
+    }
+
+    .sci {
+        gap: 5px;
+    }
+
+    .sci li a {
+        width: 30px;
+        height: 30px;
+    }
+
+    .sci li a img {
+        width: 15px;
+        height: 15px;
     }
 }
 
 @media (max-width: 480px) {
-    header {
-        gap: 10px; 
+    .contenido h2 {
+        font-size: 1.2em;
     }
 
-    header ul {
-        gap: 5px; 
+    .contenido p {
+        font-size: 0.9em;
     }
 
-    header ul li a {
-        font-size: 0.9em; 
-        padding: 8px 0;
+    .contenido a {
+        font-size: 1em;
+        padding: 8px 16px;
     }
 
-    header .buttons a {
-        padding: 8px 0; 
-        font-size: 0.9em; 
-        width: 90%; 
+    .img img {
+        max-width: 120px;
+    }
+
+    .sci li a {
+        width: 25px;
+        height: 25px;
+    }
+
+    .sci li a img {
+        width: 12px;
+        height: 12px;
     }
 }
 
