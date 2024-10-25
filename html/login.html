@@ -9,10 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
 </head>
 <body>
    <section>
@@ -20,7 +16,6 @@
         <img src="../img/fondologin.PNG" alt="">
     </div>
     <div class="contenidoBx">
-
         <div class="formBx">
             <h2>Bienvenido a TandaLoop</h2>
             <form action="">
@@ -39,8 +34,9 @@
                     </label>
                 </div>
                 <div class="inputBx">
-                    <input type="submit" value="Entrar">
-                </div><div class="inputBx">
+                    <input type="submit" value="Entrar" onclick="redirigir(event)">
+                </div>
+                <div class="inputBx">
                     <p>Aun no tienes una cuenta? <a href="../html/registro.html">Resgistrate aqui</a></p>
                     <a class="icono" href="../html/index.html"><img src="../img/volver.png" alt=""></a>
                 </div>
@@ -54,5 +50,11 @@
         </div>
     </div>
    </section>
+   <script>
+       function redirigir(event) {
+            event.preventDefault(); 
+            window.location.href = 'home.html'; 
+        }
+   </script>
 </body>
 </html>
