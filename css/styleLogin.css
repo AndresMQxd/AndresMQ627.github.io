@@ -9,15 +9,15 @@
 
 a img {
     display: block;
-    margin: 0 auto; /* Centra la imagen horizontalmente */
-    width: 20px; /* Puedes ajustar el tamaño de la imagen según tus necesidades */
+    margin: 0 auto;
+    width: 20px; 
 }
 
 a .icono{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px; /* Ajusta la separación respecto a otros elementos */
+    margin-top: 20px; 
 }
 section{
     position: relative;

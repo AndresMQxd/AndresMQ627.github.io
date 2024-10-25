@@ -65,7 +65,7 @@ header .nav-center {
     gap: 20px;
     justify-content: center;
     flex-grow: 1;
-    margin-left: 40px; /* Esto empuja los ítems centrales lejos del logo */
+    margin-left: 40px; 
 }
 
 
