@@ -1,5 +1,5 @@
 document.getElementById("btnSave").onclick =(evt)=>{
-    evt.preventDefault()//evita recargar el form
+    evt.preventDefault()
     document.getElementById("form").classList.add('was-validated')
 
     const Toast = Swal.mixin({
