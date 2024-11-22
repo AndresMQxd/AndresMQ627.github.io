@@ -33,21 +33,21 @@ const participantes = [
   "María González"
 ];
 
-// Función para obtener 5 participantes aleatorios
+
 function obtenerParticipantesAleatorios(lista, cantidad) {
-  const shuffled = lista.sort(() => 0.5 - Math.random()); // Mezcla aleatoria
-  return shuffled.slice(0, cantidad); // Selecciona los primeros `cantidad` elementos
+  const shuffled = lista.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, cantidad);
 }
 
-// Obtener 5 participantes aleatorios
+
 const seleccionados = obtenerParticipantesAleatorios(participantes, 5);
 
-// Mostrar alerta con la lista
+
 
 
 const buttons = document.querySelectorAll('.custom-btn');
 
-// Agregar un evento a cada botón
+
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     if (button.classList.contains('borrarTanda')) {
