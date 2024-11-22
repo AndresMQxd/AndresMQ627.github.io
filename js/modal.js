@@ -20,6 +20,29 @@ document.getElementById("btnSave").onclick =(evt)=>{
 
 }
 
+const participantes = [
+  "Carlos López",
+  "Ana Martínez",
+  "Pedro Ramírez",
+  "Lucía Fernández",
+  "Jorge Pérez",
+  "Sofía García",
+  "Mario Torres",
+  "Valeria Jiménez",
+  "Andrés Castro",
+  "María González"
+];
+
+// Función para obtener 5 participantes aleatorios
+function obtenerParticipantesAleatorios(lista, cantidad) {
+  const shuffled = lista.sort(() => 0.5 - Math.random()); // Mezcla aleatoria
+  return shuffled.slice(0, cantidad); // Selecciona los primeros `cantidad` elementos
+}
+
+// Obtener 5 participantes aleatorios
+const seleccionados = obtenerParticipantesAleatorios(participantes, 5);
+
+// Mostrar alerta con la lista
 
 
 const buttons = document.querySelectorAll('.custom-btn');
@@ -46,9 +69,16 @@ buttons.forEach((button) => {
         }
       });
     } else if(button.classList.contains('editarTanda')){
-      alert('¡Hiciste clic en editar tanda!');
+      Swal.fire("Aqui podras editar tus tandas!");
     }else{
-      alert('¡Hiciste clic en ver particpantes!');
+      Swal.fire({
+        title: "Lista de Participantes",
+        html: `<ul>${seleccionados
+          .map(p => `<li style="color: white;">${p}</li>`)
+          .join('')}</ul>`,
+        icon: "info",
+        confirmButtonText: "Cerrar"
+      });
     }
   });
 });
