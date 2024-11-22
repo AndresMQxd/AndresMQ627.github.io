@@ -15,7 +15,7 @@ document.getElementById("btnSave").onclick =(evt)=>{
       });
       Toast.fire({
         icon: "success",
-        title: "Datos guardados"
+        title: "Tanda creada"
       });
 
 }
