@@ -62,6 +62,11 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <?php
+       if(isset($error)){
+
+      
+    ?>
     <script>
         Swal.fire({
         icon: "error",
@@ -69,6 +74,8 @@
         text: "Credenciales incorrectas!",
       });
     </script>
+
+    <?php  } ?>
    <!--<script src="../js/loginValidacion.js" defer></script>-->
 
 </body>

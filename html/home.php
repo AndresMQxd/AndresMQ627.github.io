@@ -1,3 +1,12 @@
+<?php session_start();
+   if(isset($_SESSION['userdata'])){
+
+    $user = $_SESSION['userdata'];
+   }else{
+    header("Location:../html/login.php");
+}
+   
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,7 +72,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../html/login.html">
+                    <a href="login.php">
                         <span class="icono"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 12v-4l8 7-8 7v-4h-8v-6h8zm2-5.024v-2.976h6v8.051l8 6.767v-16.818h-16v3.284l2 1.692z"/></svg></span>
                         <span class="titulo">Cerrar Sesión</span>
                     </a>
