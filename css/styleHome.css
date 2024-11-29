@@ -230,7 +230,7 @@ body{
 
 .details .recent{
     position: relative;
-    min-height: 530px;
+    min-height: 50px;
     background: #fff;
     padding: 20px;
 }
@@ -308,6 +308,7 @@ body{
 }
 
 .Activa{
+
     background: rgb(4, 255, 25);
 }
 

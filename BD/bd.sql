@@ -25,8 +25,13 @@ CREATE TABLE Tandas (
     fecha_creacion DATE,
     estado VARCHAR(50),
     cantidad DECIMAL,
+    duracion VARCHAR(50),
+    periodoDePago VARCHAR(50),
+    MontoDePago DECIMAL,
      primary key(id_tanda)
 );
+
+drop table Tandas;
 
 
 -- tabla de Participantes
@@ -42,15 +47,15 @@ CREATE TABLE Participantes (
 
 INSERT INTO Participantes (id_tanda, nombre, fecha_registro, email, telefono)
 VALUES
-(3, 'Ana Rodriguez', '2024-03-18', 'ana.rodriguez@gmail.com', '636-112-6503'),
-(4, 'Luis Hernandez', '2023-09-12', 'luis.hernandez@gmail.com', '636-113-6504'),
-(5, 'Carlos Martinez', '2022-11-20', 'carlos.mtz@gmail.com', '636-114-6505'),
-(6, 'Fernanda Gomez', '2023-02-28', 'fer.gomez@gmail.com', '636-115-6506'),
-(7, 'Ricardo Sanchez', '2024-04-10', 'ricardo.s@gmail.com', '636-116-6507'),
-(8, 'Sofia Jimenez', '2022-10-15', 'sofia.j@gmail.com', '636-117-6508'),
-(9, 'Jorge Vargas', '2023-03-22', 'jorge.vargas@gmail.com', '636-118-6509'),
-(10, 'Natalia Torres', '2024-06-25', 'natalia.t@gmail.com', '636-119-6510'),
-(1, 'Victor Romero', '2023-05-18', 'victor.romero@gmail.com', '636-120-6511'),
+(1, 'Ana Rodriguez', '2024-03-18', 'ana.rodriguez@gmail.com', '636-112-6503'),
+(1, 'Luis Hernandez', '2023-09-12', 'luis.hernandez@gmail.com', '636-113-6504'),
+(1, 'Carlos Martinez', '2022-11-20', 'carlos.mtz@gmail.com', '636-114-6505'),
+(2, 'Fernanda Gomez', '2023-02-28', 'fer.gomez@gmail.com', '636-115-6506'),
+(2, 'Ricardo Sanchez', '2024-04-10', 'ricardo.s@gmail.com', '636-116-6507'),
+(2, 'Sofia Jimenez', '2022-10-15', 'sofia.j@gmail.com', '636-117-6508'),
+(3, 'Jorge Vargas', '2023-03-22', 'jorge.vargas@gmail.com', '636-118-6509'),
+(3, 'Natalia Torres', '2024-06-25', 'natalia.t@gmail.com', '636-119-6510'),
+(3, 'Victor Romero', '2023-05-18', 'victor.romero@gmail.com', '636-120-6511');
 (2, 'Camila Diaz', '2022-09-14', 'camila.diaz@gmail.com', '636-121-6512'),
 (3, 'Gabriel Vega', '2023-11-30', 'gabriel.vega@gmail.com', '636-122-6513'),
 (4, 'Valeria Castillo', '2024-08-18', 'valeria.c@gmail.com', '636-123-6514'),
@@ -99,11 +104,13 @@ VALUES
 
  
 -- Insertar registros en la tabla Tandas
-INSERT INTO Tandas (nombre_tanda,num_participantes, fecha_creacion, estado, cantidad)
+INSERT INTO Tandas (nombre_tanda,num_participantes, fecha_creacion, estado, cantidad, duracion, periodoDePago, MontoDePago)
 VALUES
-('Tanda sushiBox', 5, '2024-11-19', 'Activa', 3000.00),
-('Tanda TecNCG', 5, '2024-11-10', 'Activa', 1000.00),
-('Tanda ISC 2024', 8, '2024-11-09', 'Pendiente', 1500.00);
+('Tanda Familia', 3, '2024-11-19', 'Finalizada', 8150.00, '4 meses', 'semanal', 450.0 ),
+('Tanda Pollo', 10, '2024-11-10', 'Activa', 7200.00,'2 meses', 'quincenal', 200.0 ),
+('Tanda Mecatronica', 6, '2024-11-09', 'Pendiente', 1600.00, '1 meses', 'semanal', 100.0 );
+
+    drop table Participantes
  
 -- Insertar registros en la tabla Participantes
 INSERT INTO Participantes (id_tanda, id_usuario, fecha_registro)

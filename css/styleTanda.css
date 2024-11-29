@@ -6,6 +6,19 @@
     font-weight:lighter;
 }
 
+.Activa{
+
+    background: rgb(4, 255, 25);
+}
+
+.progreso{
+    background: rgb(25, 0, 255);
+}
+
+.Finalizada{
+    background: rgb(255, 24, 24);
+}
+
 .table-responsive {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
