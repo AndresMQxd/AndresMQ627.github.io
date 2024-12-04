@@ -1,4 +1,5 @@
 <?php
+include "./conexion.php";
     $nombreTanda = $_POST['txtName'];
     $numParticipantes = $_POST['txtParticipantes'];
     $fechaInicio = date('Y-m-d');
@@ -12,6 +13,9 @@
     ('$name', $numParticipantes, '$fechaInicio', '$estado', $cantidad, '$duracion', '$frecuanciaPagos', $apotacionesIndiv )";
 
     echo $con;
+    $conexion -> query($con) or die ($conexion -> error);
+    echo "\nREgistro insertado correctamente";
+
 
     
     
