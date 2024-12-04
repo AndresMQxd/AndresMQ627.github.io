@@ -146,7 +146,7 @@ $res = $conexion->query($sql) or die ($conexion->error);
                       </div>
                       <div class="col-6 mb-2">
                         <label for="">Duracion (meses):</label>
-                        <input name="txtDuracion" class="form-control" required type="number" id="monto" name="monto" min="0" step="0.01" placeholder="0.00">
+                        <input name="txtDuracion" class="form-control" required type="number" id="monto" name="monto" min="0"  placeholder="0">
                         <div class="valid-feedback">Correcto</div>
                         <div class="invalid-feedback">Datos no validos</div>
                       </div>

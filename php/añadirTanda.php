@@ -10,7 +10,7 @@ include "./conexion.php";
     $apotacionesIndiv = $_POST['txtAportaciones'];
 
     $con = "insert into Tandas values
-    ('$name', $numParticipantes, '$fechaInicio', '$estado', $cantidad, '$duracion', '$frecuanciaPagos', $apotacionesIndiv )";
+    (0,'$nombreTanda', $numParticipantes, '$fechaInicio', '$estado', $cantidad, '$duracion + meses', '$frecuanciaPagos', $apotacionesIndiv )";
 
     echo $con;
     $conexion -> query($con) or die ($conexion -> error);
