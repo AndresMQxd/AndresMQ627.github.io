@@ -1,7 +1,10 @@
 <?php
 include "../php/conexion.php";
-$sql="select * from Participantes order by id_tanda ASC";
-$sql2="select * from Tandas order by id_tanda ASC";
+if(isset($_GET["id"])){
+  $id=$_GET["id"];
+}
+$sql="select * from Participantes where id_tanda=$id ";
+$sql2="select * from Tandas where id_tanda=$id";
 $res = $conexion->query($sql) or die ($conexion->error);
 $res2 = $conexion->query($sql2) or die ($conexion->error);
 ?>
@@ -98,7 +101,8 @@ $res2 = $conexion->query($sql2) or die ($conexion->error);
                                 <td><?php echo $fila['fecha_registro']?></td>
                                 <td class="text-end">
                                     <button class="custom-btn borrarTanda">
-                                        <svg width="24" height="24" fill="#dc3545" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m20.015 6.506h-16v14.423c0 .591.448 1.071 1 1.071h14c.552 0 1-.48 1-1.071 0-3.905 0-14.423 0-14.423zm-5.75 2.494c.414 0 .75.336.75.75v8.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-8.5c0-.414.336-.75.75-.75zm-4.5 0c.414 0 .75.336.75.75v8.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-8.5c0-.414.336-.75.75-.75zm-.75-5v-1c0-.535.474-1 1-1h4c.526 0 1 .465 1 1v1h5.254c.412 0 .746.335.746.747s-.334.747-.746.747h-16.507c-.413 0-.747-.335-.747-.747s.334-.747.747-.747zm4.5 0v-.5h-3v.5z" fill-rule="nonzero"/></svg>
+                                    <a href="../php/eliminarParticipante.php?id_tanda=<?php echo $id ?>&id=<?php echo $fila['id_participante']?>"> <svg width="24" height="24" fill="#dc3545" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m20.015 6.506h-16v14.423c0 .591.448 1.071 1 1.071h14c.552 0 1-.48 1-1.071 0-3.905 0-14.423 0-14.423zm-5.75 2.494c.414 0 .75.336.75.75v8.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-8.5c0-.414.336-.75.75-.75zm-4.5 0c.414 0 .75.336.75.75v8.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-8.5c0-.414.336-.75.75-.75zm-.75-5v-1c0-.535.474-1 1-1h4c.526 0 1 .465 1 1v1h5.254c.412 0 .746.335.746.747s-.334.747-.746.747h-16.507c-.413 0-.747-.335-.747-.747s.334-.747.747-.747zm4.5 0v-.5h-3v.5z" fill-rule="nonzero"/></svg></a>
+                                       
                                       </button>
                                       <button class="custom-btn editarTanda">
                                         <svg width="24" height="24" fill="#ffc107" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -121,70 +125,38 @@ $res2 = $conexion->query($sql2) or die ($conexion->error);
                   <h1 class="modal-title fs-5" id="exampleModalLabel">Añadir participante</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="../js/modal.js" class="needs-validation" novalidate id="form">
+                <form action="../php/añadirParticipante.php" method="post" class="needs-validation" novalidate id="form">
                   <div class="modal-body">
+                    <input type="hidden" name="txtID" value="<?php echo $id ?>">
                     <div class="row">
                       <div class="col-6 mb-2">
-                        <label for="">Nombre de la tanda:</label>
-                        <input required type="text" class="form-control" placeholder="Inserta el nombre">
+                        <label for="">Nombre:</label>
+                        <input name="txtName" required type="text" class="form-control" placeholder="Inserta el nombre">
                         <div class="valid-feedback">Correcto</div>
                         <div class="invalid-feedback">Datos no validos</div>
                       </div>
                       <div class="col-6 mb-2">
-                        <label for="">Numero de participantes:</label>
-                        <input required min="1" type="number" class="form-control" placeholder="Inserta el numero de participantes">
+                        <label for="">Email:</label>
+                        <input name="txtEmail" required  type="email" class="form-control" placeholder="Inserta el email">
                         <div class="valid-feedback">Correcto</div>
                         <div class="invalid-feedback">Datos no validos</div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-6 mb-2">
-                        <label for="">Inicio de la tanda:</label>
-                        <input required type="date" class="form-control" placeholder="Inserta el nombre">
-                        <div class="valid-feedback">Correcto</div>
-                        <div class="invalid-feedback">Datos no validos</div>
-                      </div>
-                      <div class="col-6 mb-2">
-                        <label for="">Fin de la tanda:</label>
-                        <input required type="date" class="form-control" placeholder="Inserta el nombre">
-                        <div class="valid-feedback">Correcto</div>
-                        <div class="invalid-feedback">Datos no validos</div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-4 mb-2">
-                        <label for="">Monto total:</label>
-                        <input class="form-control" required type="number" id="monto" name="monto" min="0" step="0.01" placeholder="0.00">
-                        <div class="valid-feedback">Correcto</div>
-                        <div class="invalid-feedback">Datos no validos</div>
-                      </div>
-                      <div class="col-4 mb-2">
-                        <label for="">Frecuencia de aportaciones:</label>
-                        <select class="form-control" required type="text">
-                          <option value="semanal">Semanal</option>
-                          <option value="quincenal">Quincenal</option>
-                          <option value="mensual">Mensual</option>
-                          
-                    </select>
-                        <div class="valid-feedback">Correcto</div>
-                        <div class="invalid-feedback">Datos no validos</div>
-                      </div>
-                      <div class="col-4 mb-2">
-                        <label for="">Aportaciones individuales:</label>
-                        <input class="form-control" required type="number" id="monto" name="monto" min="0" step="0.01" placeholder="0.00">
-                        <div class="valid-feedback">Correcto</div>
-                        <div class="invalid-feedback">Datos no validos</div>
-                      </div>
-                    </div>
+                   
                     <div class="row">
                       <div class="col-12 mb-2">
-                        <label for="">Nota</label>
-                        <input required type="text" class="form-control" placeholder="Ingrese alguna nota:">
+                        <label for="">Telefono:</label>
+                        <input name="txtTel" class="form-control"  maxlength="12"  required type="varchar" id="monto" name="monto" min="0" step="" placeholder="636-111-1111">
                         <div class="valid-feedback">Correcto</div>
                         <div class="invalid-feedback">Datos no validos</div>
                       </div>
-                    </div>
-                    </div>
+                      <div class="row">
+                      <div class="col-12 mb-2">
+                        <label for="">Fecha de registro:</label>
+                        <input name="fechaReg"  required type="date" class="form-control" placeholder="">
+                        <div class="valid-feedback">Correcto</div>
+                        <div class="invalid-feedback">Datos no validos</div>
+                      </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                       <button type="submit" class="btn btn-dark" id="btnSave" data-bs-dismiss="modal">Guardar</button>
@@ -198,7 +170,7 @@ $res2 = $conexion->query($sql2) or die ($conexion->error);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
-      <script src="../js/modal.js"></script>
+     
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script>
         function togleMenu() {

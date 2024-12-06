@@ -14,9 +14,8 @@ include "./conexion.php";
 
     echo $con;
     $conexion -> query($con) or die ($conexion -> error);
-    echo "\nREgistro insertado correctamente";
 
-
+    header("Location:../html/tandas.php");
     
     
 
