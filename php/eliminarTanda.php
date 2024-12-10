@@ -2,17 +2,17 @@
 include "./conexion.php";
     
     $idparticipante = $_GET["id"];
-    $idtanda = $_GET["id_tanda"];
+    $idtanda = $_GET["id"];
     
     //echo $fechaReg; die();
 
-    $con = "DELETE FROM Participantes
-    WHERE id_participante = $idparticipante;";
+    $con = "DELETE FROM Tandas
+    WHERE id_tanda = $idtanda;";
 
     echo $con;
     $conexion -> query($con) or die ($conexion -> error);
 
-    header("Location:../html/participantes.php?id=".$idtanda);
+    header("Location:../html/tandas.php?id=".$idtanda);
     
     
 

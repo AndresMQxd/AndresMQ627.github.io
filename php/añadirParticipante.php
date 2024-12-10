@@ -3,7 +3,7 @@ include "./conexion.php";
     $nombre = $_POST['txtName'];
     $email = $_POST['txtEmail'];
     $tel = $_POST['txtTel'];
-    $idtanda = $_POST["txtId"];
+    $idtanda = $_POST["txtID"];
     $fechaReg = $_POST["fechaReg"];
     //echo $fechaReg; die();
 

@@ -99,13 +99,14 @@ $res = $conexion->query($sql) or die ($conexion->error);
                                 <td><?php echo $fila['fecha_creacion']?></td>
                                 <td class="text-end">
                                     <button class="custom-btn borrarTanda">
-                                    <a href="../php/eliminarParticipante.php?id_tanda=<?php echo $id ?>"><svg width="24" height="24" fill="#dc3545" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m20.015 6.506h-16v14.423c0 .591.448 1.071 1 1.071h14c.552 0 1-.48 1-1.071 0-3.905 0-14.423 0-14.423zm-5.75 2.494c.414 0 .75.336.75.75v8.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-8.5c0-.414.336-.75.75-.75zm-4.5 0c.414 0 .75.336.75.75v8.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-8.5c0-.414.336-.75.75-.75zm-.75-5v-1c0-.535.474-1 1-1h4c.526 0 1 .465 1 1v1h5.254c.412 0 .746.335.746.747s-.334.747-.746.747h-16.507c-.413 0-.747-.335-.747-.747s.334-.747.747-.747zm4.5 0v-.5h-3v.5z" fill-rule="nonzero"/></svg>
+                                    <a href="../php/eliminarTanda.php?id=<?php echo $fila['id_tanda']?>"><svg width="24" height="24" fill="#dc3545" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m20.015 6.506h-16v14.423c0 .591.448 1.071 1 1.071h14c.552 0 1-.48 1-1.071 0-3.905 0-14.423 0-14.423zm-5.75 2.494c.414 0 .75.336.75.75v8.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-8.5c0-.414.336-.75.75-.75zm-4.5 0c.414 0 .75.336.75.75v8.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-8.5c0-.414.336-.75.75-.75zm-.75-5v-1c0-.535.474-1 1-1h4c.526 0 1 .465 1 1v1h5.254c.412 0 .746.335.746.747s-.334.747-.746.747h-16.507c-.413 0-.747-.335-.747-.747s.334-.747.747-.747zm4.5 0v-.5h-3v.5z" fill-rule="nonzero"/></svg>
                                       </button>
-                                      <button class="custom-btn editarTanda">
-                                        <svg width="24" height="24" fill="#ffc107" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                      <button class="custom-btn editarTanda" data-bs-toggle="modal" data-bs-target="#modalAdd">
+                                    <a href="">  <svg width="24" height="24" fill="#ffc107" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                           <path d="m4.481 15.659c-1.334 3.916-1.48 4.232-1.48 4.587 0 .528.46.749.749.749.352 0 .668-.137 4.574-1.492zm1.06-1.061 3.846 3.846 11.321-11.311c.195-.195.293-.45.293-.707 0-.255-.098-.51-.293-.706-.692-.691-1.742-1.74-2.435-2.432-.195-.195-.451-.293-.707-.293-.254 0-.51.098-.706.293z" fill-rule="nonzero"/>
                                         </svg>
                                       </button>
+                                     
                                       <button class="custom-btn">
                                         <a href="participantes.php?id=<?php echo $fila['id_tanda']?>"> <svg width="24" height="24" fill="#343a40" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10.644 17.08c2.866-.662 4.539-1.241 3.246-3.682-3.932-7.427-1.042-11.398 3.111-11.398 4.235 0 7.054 4.124 3.11 11.398-1.332 2.455.437 3.034 3.242 3.682 2.483.574 2.647 1.787 2.647 3.889v1.031h-18c0-2.745-.22-4.258 2.644-4.92zm-12.644 4.92h7.809c-.035-8.177 3.436-5.313 3.436-11.127 0-2.511-1.639-3.873-3.748-3.873-3.115 0-5.282 2.979-2.333 8.549.969 1.83-1.031 2.265-3.181 2.761-1.862.43-1.983 1.34-1.983 2.917v.773z"/></svg></a>
                                       </button>
@@ -125,6 +126,87 @@ $res = $conexion->query($sql) or die ($conexion->error);
               <div class="modal-content">
                 <div class="modal-header">
                   <h1 class="modal-title fs-5" id="exampleModalLabel">Crear tanda</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="../php/añadirTanda.php" enctype="multipart/form-data" method="post" class="needs-validation" novalidate id="form">
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-6 mb-2">
+                        <label for="">Nombre de la tanda:</label>
+                        <input name="txtName" required type="text" class="form-control" placeholder="Inserta el nombre">
+                        <div class="valid-feedback">Correcto</div>
+                        <div class="invalid-feedback">Datos no validos</div>
+                      </div>
+                      <div class="col-6 mb-2">
+                        <label for="">Numero de participantes:</label>
+                        <input name="txtParticipantes"  required min="1" type="number" class="form-control" placeholder="Inserta el numero de participantes">
+                        <div class="valid-feedback">Correcto</div>
+                        <div class="invalid-feedback">Datos no validos</div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 mb-2">
+                        <label for="">Inicio de la tanda:</label>
+                        <input name="fechainicio"  required type="date" class="form-control" placeholder="">
+                        <div class="valid-feedback">Correcto</div>
+                        <div class="invalid-feedback">Datos no validos</div>
+                      </div>
+                      <div class="col-6 mb-2">
+                        <label for="">Duracion (meses):</label>
+                        <input name="txtDuracion" class="form-control" required type="number" id="monto" name="monto" min="0"  placeholder="0">
+                        <div class="valid-feedback">Correcto</div>
+                        <div class="invalid-feedback">Datos no validos</div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4 mb-2">
+                        <label for="">Monto total:</label>
+                        <input name="txtMonto" class="form-control" required type="number" id="monto" name="monto" min="0" step="0.01" placeholder="0.00">
+                        <div class="valid-feedback">Correcto</div>
+                        <div class="invalid-feedback">Datos no validos</div>
+                      </div>
+                      <div class="col-4 mb-2">
+                        <label for="">Frecuencia de aportaciones:</label>
+                        <select name="txtFrecuancia" class="form-control" required type="text">
+                          <option value="semanal">Semanal</option>
+                          <option value="quincenal">Quincenal</option>
+                          <option value="mensual">Mensual</option>
+                          
+                    </select>
+                        <div class="valid-feedback">Correcto</div>
+                        <div class="invalid-feedback">Datos no validos</div>
+                      </div>
+                      <div class="col-4 mb-2">
+                        <label for="">Aportaciones individuales:</label>
+                        <input name="txtAportaciones" class="form-control" required type="number" id="monto" name="monto" min="0" step="0.01" placeholder="0.00">
+                        <div class="valid-feedback">Correcto</div>
+                        <div class="invalid-feedback">Datos no validos</div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 mb-2">
+                        <label for="">Nota</label>
+                        <input required type="text" class="form-control" placeholder="Ingrese alguna nota:">
+                        <div class="valid-feedback">Correcto</div>
+                        <div class="invalid-feedback">Datos no validos</div>
+                      </div>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-dark" id="btnSave" data-bs-dismiss="modal">Guardar</button>
+                    </div>
+                </form>
+                
+                </div>
+              </div>
+            </div>
+    </div>
+    <div class="modal fade modal-lg" id="modalAdd2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Editar tanda</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="../php/añadirTanda.php" enctype="multipart/form-data" method="post" class="needs-validation" novalidate id="form">

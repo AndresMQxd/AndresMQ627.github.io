@@ -39,15 +39,15 @@ include "../php/conexion.php";
                 </div>
                 <div>
                     <label for="user-role" style="color: aliceblue;">Selecciona tu rol:</label>
-                    <select id="user-role" name="txtRole">
+                    <select required id="user-role" name="txtRol">
                       <option value="" disabled selected>Elige una opción</option>
-                      <option value="admin">Administrador</option>
-                      <option value="participant">Participante</option>
+                      <option value="Administrador">Administrador</option>
+                      <option value="Participante">Participante</option>
                     </select>
                 </div>
                 <br>
                 <div class="inputBx">
-                    <input type="submit" value="Crear cuenta" onclick="redirigir(event)">
+                    <input type="submit" value="Crear cuenta" >
                 </div>
                 
                 <div class="inputBx">
