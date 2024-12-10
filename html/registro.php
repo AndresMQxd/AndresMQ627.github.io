@@ -1,3 +1,7 @@
+<?php
+include "../php/conexion.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,25 +21,35 @@
     <div class="contenidoBx">
         <div class="formBx">
             <h2>Registro</h2>
-            <form action="" method="POST">
+            <form action="../php/regsitrarUsuario.php" method="POST">
                 <div class="inputBx">
-                    <span>Usuario</span>
-                    <input type="text" id="username" name="username" required placeholder="Tu usuario">
+                    <span>Nombre completo</span>
+                    <input type="text" id="name" name="txtName" required placeholder="Tu nombre">
                     
                 </div>
                 <div class="inputBx">
                     <span>Correo</span>
-                    <input type="email" id="email" name="email" required placeholder="ejemplo@dominio.com">
+                    <input type="email" id="email" name="txtEmail" required placeholder="ejemplo@dominio.com">
                    
                 </div>
                 <div class="inputBx">
                     <span>Contraseña</span>
-                    <input type="password" id="password" name="password" required minlength="8" placeholder="Mínimo 8 caracteres">
+                    <input type="password" id="password" name="txtPass" required minlength="8" placeholder="Mínimo 8 caracteres">
                    
                 </div>
+                <div>
+                    <label for="user-role" style="color: aliceblue;">Selecciona tu rol:</label>
+                    <select id="user-role" name="txtRole">
+                      <option value="" disabled selected>Elige una opción</option>
+                      <option value="admin">Administrador</option>
+                      <option value="participant">Participante</option>
+                    </select>
+                </div>
+                <br>
                 <div class="inputBx">
                     <input type="submit" value="Crear cuenta" onclick="redirigir(event)">
                 </div>
+                
                 <div class="inputBx">
                     <p>Ya tienes cuenta? <a href="login.php">Iniciar sesión</a></p>
                 </div>

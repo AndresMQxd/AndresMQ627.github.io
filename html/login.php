@@ -45,7 +45,7 @@
                     <input type="submit" value="Entrar">
                 </div>
                 <div class="inputBx">
-                    <p>Aún no tienes una cuenta? <a href="../html/registro.html">Regístrate aquí</a></p>
+                    <p>Aún no tienes una cuenta? <a href="../html/registro.php">Regístrate aquí</a></p>
                     <a class="icono" href="../html/index.html"><img src="../img/volver.png" alt=""></a>
                 </div>
             </form>
