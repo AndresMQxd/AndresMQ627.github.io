@@ -1,14 +1,18 @@
 <?php
 include "./conexion.php";
-    $nombreTanda = $_POST['txtName'];
-    $numParticipantes = $_POST['txtParticipantes'];
-    $duracion = $_POST['txtDuracion'];
-    $cantidad = $_POST['txtMonto'];
-    $frecuanciaPagos = $_POST['txtFrecuancia'];
-    $apotacionesIndiv = $_POST['txtAportaciones'];
+$idtanda = $_POST['txtId'];
+$nombreTanda = $_POST['txtName'];
+$numParticipantes = $_POST['txtParticipantes'];
+$duracion = $_POST['txtDuracion'];
+$cantidad = $_POST['txtMonto'];
+$frecuanciaPagos = $_POST['txtFrecuancia'];
+$apotacionesIndiv = $_POST['txtAportaciones'];
 
-    $con = "insert into Tandas values
-    (0,'$nombreTanda', $numParticipantes, '$fechaInicio', '$estado', $cantidad, '$duracion + meses', '$frecuanciaPagos', $apotacionesIndiv )";
+  
+    
+    $con = "UPDATE Tandas
+SET nombre_tanda = '$nombreTanda', num_participantes = $numParticipantes, cantidad = $cantidad, periodoDePago = '$frecuanciaPagos', MontoDePago = $apotacionesIndiv
+WHERE id_tanda =$idtanda ;";
 
     echo $con;
     $conexion -> query($con) or die ($conexion -> error);

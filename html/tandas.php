@@ -98,16 +98,24 @@ $res = $conexion->query($sql) or die ($conexion->error);
                                 <td><?php echo $fila['cantidad']?></td>
                                 <td><?php echo $fila['fecha_creacion']?></td>
                                 <td class="text-end">
-                                    <button class="custom-btn borrarTanda">
-                                    <a href="../php/eliminarTanda.php?id=<?php echo $fila['id_tanda']?>"><svg width="24" height="24" fill="#dc3545" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m20.015 6.506h-16v14.423c0 .591.448 1.071 1 1.071h14c.552 0 1-.48 1-1.071 0-3.905 0-14.423 0-14.423zm-5.75 2.494c.414 0 .75.336.75.75v8.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-8.5c0-.414.336-.75.75-.75zm-4.5 0c.414 0 .75.336.75.75v8.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-8.5c0-.414.336-.75.75-.75zm-.75-5v-1c0-.535.474-1 1-1h4c.526 0 1 .465 1 1v1h5.254c.412 0 .746.335.746.747s-.334.747-.746.747h-16.507c-.413 0-.747-.335-.747-.747s.334-.747.747-.747zm4.5 0v-.5h-3v.5z" fill-rule="nonzero"/></svg>
+                                      <button class="custom-btn borrarTanda">
+                                         <a href="../php/eliminarTanda.php?id=<?php echo $fila['id_tanda']?>"><svg width="24" height="24" fill="#dc3545" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m20.015 6.506h-16v14.423c0 .591.448 1.071 1 1.071h14c.552 0 1-.48 1-1.071 0-3.905 0-14.423 0-14.423zm-5.75 2.494c.414 0 .75.336.75.75v8.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-8.5c0-.414.336-.75.75-.75zm-4.5 0c.414 0 .75.336.75.75v8.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-8.5c0-.414.336-.75.75-.75zm-.75-5v-1c0-.535.474-1 1-1h4c.526 0 1 .465 1 1v1h5.254c.412 0 .746.335.746.747s-.334.747-.746.747h-16.507c-.413 0-.747-.335-.747-.747s.334-.747.747-.747zm4.5 0v-.5h-3v.5z" fill-rule="nonzero"/></svg>
+                                          </a>
                                       </button>
-                                      <button class="custom-btn editarTanda" data-bs-toggle="modal" data-bs-target="#modalAdd">
-                                    <a href="" data-bs-toggle="modal" data-bs-target="#modalAdd2"
-                                    data-id="<?php echo $fila['id_tanda']; ?>"
-                                  
-                                    >  <svg width="24" height="24" fill="#ffc107" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="m4.481 15.659c-1.334 3.916-1.48 4.232-1.48 4.587 0 .528.46.749.749.749.352 0 .668-.137 4.574-1.492zm1.06-1.061 3.846 3.846 11.321-11.311c.195-.195.293-.45.293-.707 0-.255-.098-.51-.293-.706-.692-.691-1.742-1.74-2.435-2.432-.195-.195-.451-.293-.707-.293-.254 0-.51.098-.706.293z" fill-rule="nonzero"/>
-                                        </svg>
+                                      <button class="custom-btn editarTanda" data-bs-toggle="modal" data-bs-target="#modalAdd2"
+                                              data-id="<?php echo $fila['id_tanda']; ?>"
+                                              data-nombre="<?php echo $fila['nombre_tanda']; ?>"
+                                              data-participantes="<?php echo $fila['num_participantes']; ?>"
+                                              data-duracion="<?php echo $fila['duracion']; ?>"
+                                              data-monto="<?php echo $fila['cantidad']; ?>"
+                                              data-frecuencia="<?php echo $fila['periodoDePago']; ?>"
+                                              data-aportacionesInd="<?php echo $fila['MontoDePago']; ?>"
+                                              >
+                                          
+                                              <svg width="24" height="24" fill="#ffc107" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                  <path d="m4.481 15.659c-1.334 3.916-1.48 4.232-1.48 4.587 0 .528.46.749.749.749.352 0 .668-.137 4.574-1.492zm1.06-1.061 3.846 3.846 11.321-11.311c.195-.195.293-.45.293-.707 0-.255-.098-.51-.293-.706-.692-.691-1.742-1.74-2.435-2.432-.195-.195-.451-.293-.707-.293-.254 0-.51.098-.706.293z" fill-rule="nonzero"/>
+                                              </svg>
+                                          
                                       </button>
                                      
                                       <button class="custom-btn">
@@ -216,7 +224,7 @@ $res = $conexion->query($sql) or die ($conexion->error);
                   <div class="modal-body">
                     <div class="row">
                       <div class="col-6 mb-2">
-                      <input type="text" name="txtid" id="tandaId">
+                      <input type="hidden" name="txtId" id="tandaId">
                         <label for="">Nombre de la tanda:</label>
                         <input id="name" name="txtName" required type="text" class="form-control" placeholder="Inserta el nombre">
                         <div class="valid-feedback">Correcto</div>
@@ -232,7 +240,7 @@ $res = $conexion->query($sql) or die ($conexion->error);
                     <div class="row">
                       <div class="col-12 mb-2">
                         <label for="">Duracion (meses):</label>
-                        <input id="duracion" name="txtDuracion" class="form-control" required type="number" id="monto" name="monto" min="0"  placeholder="0">
+                        <input id="duracion" name="txtDuracion" class="form-control" required type="text" id="monto" name="monto" min="0"  placeholder="0">
                         <div class="valid-feedback">Correcto</div>
                         <div class="invalid-feedback">Datos no validos</div>
                       </div>
@@ -240,7 +248,7 @@ $res = $conexion->query($sql) or die ($conexion->error);
                     <div class="row">
                       <div class="col-4 mb-2">
                         <label for="">Monto total:</label>
-                        <input id="monto" name="txtMonto" class="form-control" required type="number" id="monto" name="monto" min="0" step="0.01" placeholder="0.00">
+                        <input id="montoEdit" name="txtMonto" class="form-control" required type="text" id="monto" name="monto" min="0" step="0.01" placeholder="0.00">
                         <div class="valid-feedback">Correcto</div>
                         <div class="invalid-feedback">Datos no validos</div>
                       </div>
@@ -262,14 +270,7 @@ $res = $conexion->query($sql) or die ($conexion->error);
                         <div class="invalid-feedback">Datos no validos</div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-12 mb-2">
-                        <label for="">Nota</label>
-                        <input required type="text" class="form-control" placeholder="Ingrese alguna nota:">
-                        <div class="valid-feedback">Correcto</div>
-                        <div class="invalid-feedback">Datos no validos</div>
-                      </div>
-                    </div>
+                    
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -287,20 +288,28 @@ $res = $conexion->query($sql) or die ($conexion->error);
 for (var i = 0; i < botones.length; i++) {
   botones[i].onclick = (evt) => {
     var btn = evt.target.closest('button');
-    
+    console.log("asdasds",btn);
     // Obtener los valores de los atributos data- del botón
     var id = btn.getAttribute("data-id");
     var nombre = btn.getAttribute("data-nombre");
-    var participantes = btn.getAttribute(" data-participantes");
+    var participantes = btn.getAttribute("data-participantes");
     var duracion = btn.getAttribute("data-duracion");
     var monto = btn.getAttribute("data-monto");
-    var cantidad = btn.getAttribute("data-cantidad");
+    var aportacionesInd = btn.getAttribute("data-aportacionesInd");
     var frecuencia = btn.getAttribute("data-frecuencia");
+
+   
 
 
     // Asignar estos valores a los campos del formulario en el modal
-   
+    console.log(monto,document.getElementById("monto"));
     document.getElementById("tandaId").value = id;
+    document.getElementById("name").value = nombre;
+    document.getElementById("part").value = participantes;
+    document.getElementById("duracion").value = duracion;
+    document.getElementById("montoEdit").value = monto;
+    document.getElementById("frec").value = frecuencia;
+    document.getElementById("aportaciones").value = aportacionesInd;
 
   }
 }
