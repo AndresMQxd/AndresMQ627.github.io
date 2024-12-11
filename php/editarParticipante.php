@@ -1,7 +1,8 @@
 <?php
 include "./conexion.php";
     
-$idparticipante = $_GET["id"];
+$idparticipante = $_POST["txtid"];
+$idtanda = $_POST["txtIdTanda"];
 $nombre = $_POST['txtNombre'];
 $email = $_POST['txtEmail'];
 $tel = $_POST['txtTel'];
@@ -14,6 +15,7 @@ WHERE id_participante =$idparticipante ;";
 
 echo $con;
 $conexion -> query($con) or die ($conexion -> error);
+header("Location:../html/participantes.php?id=".$idtanda);
 
 
 

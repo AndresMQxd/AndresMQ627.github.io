@@ -135,8 +135,14 @@ $res2 = $conexion->query($sql2) or die ($conexion->error);
                       </svg></a>
 
                   </button>
-                  <button type="button" class="custom-btn editarTanda" data-bs-toggle="modal"
-                    data-bs-target="#editParticipantModal">
+                  <button type="button" class="custom-btn editarParticipante"
+                  data-id="<?php echo $fila['id_participante']; ?>"
+                  data-nombre="<?php echo $fila['nombre'];?>"
+                  data-email="<?php echo $fila['email']; ?>"
+                  data-tel="<?php echo $fila['telefono']; ?>"
+                   data-bs-toggle="modal"
+                    data-bs-target="#editParticipantModal" >
+
                     <svg width="24" height="24" fill="#ffc107" clip-rule="evenodd" fill-rule="evenodd"
                       stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg">
@@ -222,20 +228,20 @@ $res2 = $conexion->query($sql2) or die ($conexion->error);
                 <div class="modal-body">
                
                     <!-- Campo oculto para el ID -->
-                    <input type="text" name="id" id="participantId" value="<?php echo $id ?>">
-                    
+                    <input type="hidden" name="txtid" id="participantId">
+                    <input type="hidden" name="txtIdTanda" value="<?php echo $id ?>">
                     <!-- Campos de edición -->
                     <div class="mb-3">
                         <label for="participantName" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="participantName" name="txtNombre" required>
+                        <input required type="text" class="form-control" id="participantName" name="txtNombre" required>
                     </div>
                     <div class="mb-3">
                         <label for="participantEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="participantEmail" name="txtEmail" required>
+                        <input required type="email" class="form-control" id="participantEmail" name="txtEmail" required>
                     </div>
                     <div class="mb-3">
                         <label for="participantPhone" class="form-label">Teléfono</label>
-                        <input type="tel" class="form-control" id="participantPhone" name="txtTel" required>
+                        <input required type="tel" class="form-control" id="participantPhone" name="txtTel" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -252,6 +258,30 @@ $res2 = $conexion->query($sql2) or die ($conexion->error);
     crossorigin="anonymous"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+  <script>
+    var botones = document.getElementsByClassName("editarParticipante");
+
+for (var i = 0; i < botones.length; i++) {
+  botones[i].onclick = (evt) => {
+    var btn = evt.target.closest('button');
+    
+    // Obtener los valores de los atributos data- del botón
+    var id = btn.getAttribute("data-id");
+    var nombre = btn.getAttribute("data-nombre");
+    var email = btn.getAttribute("data-email");
+    var tel = btn.getAttribute("data-tel");
+
+
+    // Asignar estos valores a los campos del formulario en el modal
+    document.getElementById("participantId").value = id;
+    document.getElementById("participantName").value = nombre;
+    document.getElementById("participantEmail").value = email;
+    document.getElementById("participantPhone").value = tel;
+
+  }
+}
+
+  </script>
   <script>
     function togleMenu() {
       let toggle = document.querySelector('.toggle')
